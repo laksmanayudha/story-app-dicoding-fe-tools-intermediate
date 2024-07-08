@@ -3,12 +3,159 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <title>Story App</title>
   </head>
   <body>
-    <div class="container py-4 px-3 mx-auto">
-      <h1>Hello, Bootstrap and Webpack!</h1>
-      <button class="btn btn-primary">Primary button</button>
+    <div class="container">
+      <nav class="navbar bg-body-tertiary sticky-top">
+        <div class="container-fluid">
+          <div class="d-flex gap-3 w-100">
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#sidebar"
+                aria-controls="sidebar"
+                aria-label="Toggle navigation"
+              >
+                <i class="bi bi-list"></i>
+              </button>
+              <a class="navbar-brand" href="#">Lemme Stories</a>
+          </div>
+          
+          <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarTitle">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="sidebarTitle">Lemme Stories</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active fs-5" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fs-5" href="#">Add a Story</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fs-5" href="#">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link fs-5 dropdown-toggle"
+                    href="#" role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Contact
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">LinkedIn</a></li>
+                    <li><a class="dropdown-item" href="#">Github</a></li>
+                    <li><a class="dropdown-item" href="#">Instagram</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Email</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <main class="container mt-2 p-2">
+        <div class="row">
+          <div class="col-md-7">
+            <div class="vstack gap-3">
+              <div class="card" style="max-width: 43rem;">
+                <div class="card-header bg-transparent">
+                  <div class="hstack gap-2">
+                    <i class="bi bi-person-fill"></i>
+                    Laksmana Yudha
+                  </div>
+                </div>
+                <img src="https://picsum.photos/1200/700?random=1" alt="story image">
+                <div class="card-body">
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <div class="card-footer bg-transparent">
+                  <div class="hstack gap-3">
+                    <a href="#" class="text-decoration-none link-dark">2 <i class="bi bi-chat"></i></a>
+                    <a href="#" class="text-decoration-none link-dark">3 <i class="bi bi-heart"></i></a>
+                    <span class="ms-auto">2 days ago</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card" style="max-width: 43rem;">
+                <div class="card-header bg-transparent">
+                  <div class="hstack gap-2">
+                    <i class="bi bi-person-fill"></i>
+                    Laksmana Yudha
+                  </div>
+                </div>
+                <img src="https://picsum.photos/1200/700?random=1" alt="story image">
+                <div class="card-body">
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <div class="card-footer bg-transparent">
+                  <div class="hstack gap-3">
+                    <a href="#" class="text-decoration-none link-dark">2 <i class="bi bi-chat"></i></a>
+                    <a href="#" class="text-decoration-none link-dark">3 <i class="bi bi-heart"></i></a>
+                    <span class="ms-auto">2 days ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="d-none d-md-block col-md-5">
+            <h5>Find Topics</h5>
+            <form class="d-flex mt-3" role="search">
+              <input class="form-control me-2" type="search" placeholder="Find Topics" aria-label="Search">
+              <button class="btn btn-outline-dark" type="submit">
+                <i class="bi bi-search"></i>
+              </button>
+            </form>
+            <div class="topic-list mt-2">
+              <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <p class="mb-1">Some placeholder content in a paragraph. placeholder content a paragraph...</p>
+                  </div>
+                  <div class="hstack justify-content-end gap-2">
+                    <small>by <i class="bi bi-person-fill"></i> Laksmana Yudha</small>
+                    <small>3 days ago</small>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <p class="mb-1">Some placeholder content in a paragraph. placeholder content a paragraph...</p>
+                  </div>
+                  <div class="hstack justify-content-end gap-2">
+                    <small>by <i class="bi bi-person-fill"></i> Laksmana Yudha</small>
+                    <small>3 days ago</small>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <p class="mb-1">Some placeholder content in a paragraph. placeholder content a paragraph...</p>
+                  </div>
+                  <div class="hstack justify-content-end gap-2">
+                    <small>by <i class="bi bi-person-fill"></i> Laksmana Yudha</small>
+                    <small>3 days ago</small>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-lg btn-primary position-fixed bottom-0 end-0 me-4 mb-4">
+          <i class="bi bi-plus-lg"></i>
+        </button>
+      </main>
     </div>
   </body>
 </html>
