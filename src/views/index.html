@@ -18,103 +18,37 @@
         scrollbar-width: thin;
         scrollbar-color: rgb(186, 186, 186) transparent;
       }
+
+      .custom-badge-list {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        padding: .7rem .5rem;
+      }
+
+      .custom-badge-list .custom-badge-item {
+        background-color: rgb(241, 241, 241);
+        padding: .3rem .5rem;
+        border-radius: .5rem;
+        font-size: .9rem;
+        font-weight: 500;
+        cursor: pointer;
+      }
+
+      .custom-badge-list .custom-badge-item:hover {
+        transform: scale(1.03);
+        transition: .1s ease-in;
+      }
+
+      .custom-badge-list .custom-badge-item.active {
+        background-color: rgb(42, 42, 42);
+        color: white;
+      }
     </style>
   </head>
   <body>
     <div class="container-fluid p-0">
-      <nav class="navbar bg-light bg-opacity-75 sticky-top">
-        <div class="container">
-          <div class="d-flex gap-3 w-100">
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#sidebar"
-              aria-controls="sidebar"
-              aria-label="Toggle navigation"
-            >
-              <i class="bi bi-list"></i>
-            </button>
-            <a class="navbar-brand text-truncate" href="#">
-              UStory
-            </a>
-          </div>
-          
-          <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarTitle">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="sidebarTitle">UStorys</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item">
-                  <a class="nav-link active fs-5" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link fs-5"
-                    href="#"
-                    data-bs-toggle="modal"
-                    data-bs-target="#addStoryModal"
-                  >
-                    Add a Story
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link fs-5" href="/about-us.html">About Us</a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link fs-5 dropdown-toggle"
-                    href="#" role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Contact
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <div class="hstack gap-2">
-                          <i class="bi bi-linkedin me-2"></i>
-                          <div class="text-truncate">I Gede Laksmana Yudha</div>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <div class="hstack gap-2">
-                          <i class="bi bi-github me-2"></i>
-                          <div class="text-truncate">laksmanayudha</div>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <div class="hstack gap-2">
-                          <i class="bi bi-instagram me-2"></i>
-                          <div class="text-truncate">laksmanayudha_</div>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <div class="hstack gap-2">
-                          <i class="bi bi-envelope-at me-2"></i>
-                          <div class="text-truncate">laksmanayudha22@gmail.com</div>
-                        </div>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <navbar-with-offcanvas brandName="UStory"></navbar-with-offcanvas>
       <main class="container-lg">
         <div class="row">
           <div class="col-md-5 mt-3">
@@ -196,6 +130,14 @@
             </div>
           </div>
           <div class="col-md-7 mt-3">
+            <div class="custom-badge-list">
+              <span class="custom-badge-item active">For You</span>
+              <span class="custom-badge-item">Trending</span>
+              <span class="custom-badge-item">Entertainment</span>
+              <span class="custom-badge-item">Holiday</span>
+              <span class="custom-badge-item">Music</span>
+              <span class="custom-badge-item">More</span>
+            </div>
             <div class="vstack align-items-center gap-3 p-3 custom-scroll">
               <div class="card w-100" style="max-width: 34rem;">
                 <div class="card-header bg-transparent">
