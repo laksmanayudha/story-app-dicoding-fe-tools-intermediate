@@ -11,19 +11,11 @@
     <title>UStory</title>
 
     <style>
-      .custom-scroll {
-        height: 85vh;
-        overflow-y: auto;
-        overflow-x: hidden;
-        scrollbar-width: thin;
-        scrollbar-color: rgb(186, 186, 186) transparent;
-      }
-
       .custom-badge-list {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
+        display: none;
         padding: .7rem .5rem;
+        z-index: 1;
+        background-color: white;
       }
 
       .custom-badge-list .custom-badge-item {
@@ -44,172 +36,43 @@
         background-color: rgb(42, 42, 42);
         color: white;
       }
+
+      @media screen and (min-width: 576px) {
+        .custom-badge-list {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="container-fluid p-0">
       <navbar-with-offcanvas brandName="UStory"></navbar-with-offcanvas>
-      <main class="container-lg">
-        <div class="row">
-          <div class="col-md-5 mt-3">
-            <div class="vstack align-items-center gap-3">
-              <div class="search-topic w-100">
-                <h5 class="d-none d-md-block">Find Topics</h5>
-                <form role="search" action="#">
-                  <div class="input-group">
-                    <input class="form-control" type="search" placeholder="Find Topics" aria-label="Search">
-                    <button class="btn btn-dark" type="submit">
-                      <i class="bi bi-search"></i>
-                    </button>
-                  </div>
-                </form>
-              </div>
-              <div class="topic-list d-none d-md-flex flex-md-column align-items-md-center gap-3">
-                <div class="list-group">
-                  <a href="#" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                      <p class="mb-1">Some placeholder content in a paragraph. placeholder content a paragraph...</p>
-                    </div>
-                    <div class="hstack justify-content-end gap-2">
-                      <small>by <i class="bi bi-person-fill"></i> Laksmana Yudha</small>
-                      &bull;
-                      <small>3 days ago</small>
-                    </div>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                      <p class="mb-1">Some placeholder content in a paragraph. placeholder content a paragraph...</p>
-                    </div>
-                    <div class="hstack justify-content-end gap-2">
-                      <small>by <i class="bi bi-person-fill"></i> Laksmana Yudha</small>
-                      &bull;
-                      <small>3 days ago</small>
-                    </div>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                      <p class="mb-1">Some placeholder content in a paragraph. placeholder content a paragraph...</p>
-                    </div>
-                    <div class="hstack justify-content-end gap-2">
-                      <small>by <i class="bi bi-person-fill"></i> Laksmana Yudha</small>
-                      &bull;
-                      <small>3 days ago</small>
-                    </div>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                      <p class="mb-1">Some placeholder content in a paragraph. placeholder content a paragraph...</p>
-                    </div>
-                    <div class="hstack justify-content-end gap-2">
-                      <small>by <i class="bi bi-person-fill"></i> Laksmana Yudha</small>
-                      &bull;
-                      <small>3 days ago</small>
-                    </div>
-                  </a>
-                </div>
-                <div class="topic-pagination">
-                  <nav aria-label="Page navigation">
-                    <ul class="pagination">
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                          <span aria-hidden="true">&laquo;</span>
-                        </a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                          <span aria-hidden="true">&raquo;</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
+      <main class="container-lg" id="mainAppContainer">
+        <div class="row ">
+          <div class="col-md-5 mt-3 ">
+            <div class="vstack gap-3" id="topicSection">
+              <search-topic></search-topic>
+              <div class="d-none d-md-flex flex-md-column align-items-md-start gap-3 w-100">
+                <topic-list></topic-list>
+                <topic-pagination></topic-pagination>
               </div>
             </div>
           </div>
           <div class="col-md-7 mt-3">
-            <div class="custom-badge-list">
-              <span class="custom-badge-item active">For You</span>
-              <span class="custom-badge-item">Trending</span>
-              <span class="custom-badge-item">Entertainment</span>
-              <span class="custom-badge-item">Holiday</span>
-              <span class="custom-badge-item">Music</span>
-              <span class="custom-badge-item">More</span>
-            </div>
-            <div class="vstack align-items-center gap-3 p-3 custom-scroll">
-              <div class="card w-100" style="max-width: 34rem;">
-                <div class="card-header bg-transparent">
-                  <div class="hstack gap-2">
-                    <i class="bi bi-person-fill"></i>
-                    Laksmana Yudha
-                  </div>
-                </div>
-                <img src="https://picsum.photos/1200/700?random=1" alt="story image">
-                <div class="card-body">
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <div class="card-footer bg-transparent">
-                  <div class="hstack gap-3">
-                    <a href="#" class="text-decoration-none link-dark">2 <i class="bi bi-chat"></i></a>
-                    <a href="#" class="text-decoration-none link-dark">3 <i class="bi bi-heart"></i></a>
-                    <span class="ms-auto">2 days ago</span>
-                  </div>
-                </div>
-              </div>
-              <div class="card w-100" style="max-width: 34rem;">
-                <div class="card-header bg-transparent">
-                  <div class="hstack gap-2">
-                    <i class="bi bi-person-fill"></i>
-                    Laksmana Yudha
-                  </div>
-                </div>
-                <img src="https://picsum.photos/1200/700?random=1" alt="story image">
-                <div class="card-body">
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <div class="card-footer bg-transparent">
-                  <div class="hstack gap-3">
-                    <a href="#" class="text-decoration-none link-dark">2 <i class="bi bi-chat"></i></a>
-                    <a href="#" class="text-decoration-none link-dark">3 <i class="bi bi-heart"></i></a>
-                    <span class="ms-auto">2 days ago</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <category-list></category-list>
+            <story-list></story-list>
           </div>
         </div>
-        <button
-          class="btn btn-lg btn-dark position-fixed bottom-0 end-0 me-3 mb-3"
-          data-bs-toggle="modal"
-          data-bs-target="#addStoryModal"
-        >
-          <i class="bi bi-plus-lg"></i>
-        </button>
-        <div class="modal fade" id="addStoryModal" tabindex="-1" aria-labelledby="addStoryModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-fullscreen-md-down modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="addStoryModalLabel">Add a Story</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <div class="form-group mb-3">
-                  <label for="description" class="form-label">Write your story</label>
-                  <textarea class="form-control" id="description" placeholder="Type here..." rows="3"></textarea>
-                </div>
-                <div class="form-group mb-3">
-                  <label for="photo" class="form-label">Photo</label>
-                  <input class="form-control" type="file" id="photo">
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-dark">Post</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <button-ustory
+          bsIcon="bi-plus-lg"
+          class="position-fixed bottom-0 end-0 me-3 mb-3"
+          triggerModal="#addStoryModal"
+          large
+        ></button-ustory>
+        <add-modal-ustory modalId="addStoryModal"></add-modal-ustory>
       </main>
     </div>
   </body>

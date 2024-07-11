@@ -6,6 +6,8 @@ class NavLinks extends LitWithoutShadowDom {
     return html`
       <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
         <nav-link content="Home" to="/"></nav-link>
+        <nav-link content="Login" to="/" class="d-sm-none"></nav-link>
+        <nav-link content="Sign Up" to="/" class="d-sm-none"></nav-link>
         <nav-link content="About Us" to="/about-us.html"></nav-link>
         <nav-dropdown content="Contacts"></nav-dropdown>
       </ul>

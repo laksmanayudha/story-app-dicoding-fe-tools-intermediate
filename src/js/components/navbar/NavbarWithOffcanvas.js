@@ -13,7 +13,7 @@ class NavbarWithOffcanvas extends LitWithoutShadowDom {
 
   render() {
     return html`
-      <nav class="navbar bg-light bg-opacity-75 sticky-top">
+      <nav class="navbar bg-light sticky-top">
         <div class="container">
           <div class="d-flex gap-3 w-100">
             <button
@@ -29,6 +29,14 @@ class NavbarWithOffcanvas extends LitWithoutShadowDom {
             <a class="navbar-brand text-truncate" href="#">
               ${this.brandName}
             </a>
+            <ul class="d-none d-sm-flex nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="#">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="#">Sign Up</a>
+              </li>
+            </ul>
           </div>
           
           <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarTitle">
