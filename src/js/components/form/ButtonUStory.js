@@ -8,19 +8,21 @@ class ButtonUStory extends LitWithoutShadowDom {
     content: { type: String, reflect: true },
     type: { type: String, reflect: true },
     triggerModal: { type: String, reflect: true },
-    large: { type: Boolean, reflect: true }
+    large: { type: Boolean, reflect: true },
+    theme: { type: String , reflect: true },
   }
 
   constructor() {
     super();
     this.type = 'button';
+    this.theme = 'btn-dark';
   }
 
   render() {
     return html`
       <button
         type=${this.type}
-        class="btn ${this.large ? 'btn-lg' : ''} btn-dark"
+        class="btn ${this.large ? 'btn-lg' : ''} ${this.theme}"
         data-bs-toggle=${this.triggerModal ? 'modal' : nothing}
         data-bs-target=${this.triggerModal || nothing}
         @click=${this.onClick}

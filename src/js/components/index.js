@@ -22,6 +22,12 @@ import './story/StoryList';
 
 // Form
 import './form/ButtonUStory';
+import './form/ButtonLinkUStory';
 import './form/AddModalUStory';
 import './form/TextareaUStory';
 import './form/InputImageUStory';
+
+// company
+import './company/CompanyProfile';
+import './company/KeyFeatures';
+import './company/KeyFeature';

@@ -15,7 +15,7 @@ class TopicItem extends LitWithoutShadowDom {
 
     return html`
       <a href="#" class="text-decoration-none text-dark">
-        <div class="d-flex w-100 justify-content-between">
+        <div class="w-100 mb-3">
           <p class="mb-1">${this.description}</p>
         </div>
         <div class="hstack justify-content-end gap-2">

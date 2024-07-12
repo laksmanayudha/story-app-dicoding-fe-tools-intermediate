@@ -16,7 +16,7 @@ class StoryCard extends LitWithoutShadowDom {
     return html`
       <div class="card mx-auto" style="max-width: 34rem;">
         <div class="card-header bg-transparent">
-          <div class="hstack gap-2">
+          <div class="hstack gap-2 text-truncate">
             <i class="bi bi-person-fill"></i>
             ${this.name}
           </div>
@@ -29,7 +29,7 @@ class StoryCard extends LitWithoutShadowDom {
           <div class="hstack gap-3">
             <a href="#" class="text-decoration-none link-dark">0 <i class="bi bi-chat"></i></a>
             <a href="#" class="text-decoration-none link-dark">0 <i class="bi bi-heart"></i></a>
-            <span class="ms-auto">2 days ago</span>
+            <span class="ms-auto text-truncate">${this.createdAt}</span>
           </div>
         </div>
       </div>

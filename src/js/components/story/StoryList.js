@@ -8,7 +8,7 @@ class StoryList extends LitWithoutShadowDom {
 
   render() {
     return html`
-    <div class="vstack align-items-center gap-3 p-3">
+    <div class="vstack align-items-center gap-3">
       <story-card
         photoUrl="https://picsum.photos/1200/700?random=1"
         description="In rhoncus lorem nec ex egestas mollis vel a mauris. Pellentesque vel diam at neque hendrerit bibendum. Quisque egestas, dolor eu semper dapibus, turpis neque."
