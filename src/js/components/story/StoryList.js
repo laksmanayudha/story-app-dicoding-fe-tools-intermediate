@@ -6,21 +6,34 @@ class StoryList extends LitWithoutShadowDom {
     stories: { type: Array }
   }
 
+  constructor() {
+    super();
+    this.stories = [];
+  }
+
+  _showStories() {
+    if (!this.stories.length) return 'No story available';
+
+    return this.stories.map((story) => {
+      return this._storyCardTemplate(story);
+    });
+  }
+
+  _storyCardTemplate({ photoUrl, description, name, createdAt }) {
+    return html`
+      <story-card
+        photoUrl=${photoUrl}
+        description=${description}
+        name=${name}
+        createdAt=${createdAt}
+      ></story-card>
+    `;
+  }
+
   render() {
     return html`
     <div class="vstack align-items-center gap-3">
-      <story-card
-        photoUrl="https://picsum.photos/1200/700?random=1"
-        description="In rhoncus lorem nec ex egestas mollis vel a mauris. Pellentesque vel diam at neque hendrerit bibendum. Quisque egestas, dolor eu semper dapibus, turpis neque."
-        name="Faisal Sulaiman"
-        createdAt="3 days ago"
-      ></story-card>
-      <story-card
-        photoUrl="https://picsum.photos/1200/700?random=1"
-        description="In rhoncus lorem nec ex egestas mollis vel a mauris. Pellentesque vel diam at neque hendrerit bibendum. Quisque egestas, dolor eu semper dapibus, turpis neque."
-        name="Faisal Sulaiman"
-        createdAt="3 days ago"
-      ></story-card>
+      ${this._showStories()}
     </div>
     `;
   }

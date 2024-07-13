@@ -1,0 +1,33 @@
+@use 'sass:map';
+@use '../abstracts/variables' as var;
+@use '../abstracts/mixins' as mix;
+
+.custom-badge-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem .5rem;
+  z-index: 1;
+  background-color: map.get(var.$us-colors, 'white');
+
+  .custom-badge-item {
+    @include mix.btn-text-bg('dark', 'light-grey');
+
+    padding: .3rem .5rem;
+    border-radius: .5rem;
+    font-size: .9rem;
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      @include mix.btn-text-bg('dark', 'grey');
+
+      transition: var.$us-transition;
+    }
+
+    &.active {
+      @include mix.btn-text-bg('white', 'black');
+    }
+  }
+}

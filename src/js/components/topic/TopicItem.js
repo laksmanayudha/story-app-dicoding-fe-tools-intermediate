@@ -16,7 +16,15 @@ class TopicItem extends LitWithoutShadowDom {
     return html`
       <a href="#" class="text-decoration-none text-dark">
         <div class="w-100 mb-3">
-          <p class="mb-1">${this.description}</p>
+          <p
+            class="mb-1"
+            style="
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+            "
+          >${this.description}</p>
         </div>
         <div class="hstack justify-content-end gap-2">
           <small>by <i class="bi bi-person-fill"></i> ${this.name}</small>

@@ -9,9 +9,9 @@ class CategoryBadge extends LitWithoutShadowDom {
 
   render() {
     return html`
-      <span class="custom-badge-item ${this.active ? 'active' : ''}">
+      <a href="#" class="custom-badge-item ${this.active ? 'active' : ''}">
         ${this.content}
-      </span>
+      </a>
     `;
   }
 }

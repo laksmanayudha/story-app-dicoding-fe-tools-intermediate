@@ -1,0 +1,7 @@
+@use 'sass:map';
+@use 'variables' as var;
+
+@mixin btn-text-bg($text-color, $bg-color) {
+  background-color: map.get(var.$us-colors, $bg-color);
+  color: map.get(var.$us-colors, $text-color);
+}

@@ -8,11 +8,18 @@ class TextareaUStory extends LitWithoutShadowDom {
     placeholder: { type: String, reflect: true },
     label: { type: String, reflect: true },
     rows: { type: String, reflect: true },
+    required: { type: Boolean, reflect: true },
+    invalidFeedback: { type: String, reflect: true },
+    onChange: { type: Function },
   }
 
   constructor() {
     super();
     this.rows = 3;
+  }
+
+  _onInputChange(e) {
+    this.onChange(e.target.value);
   }
 
   render() {
@@ -24,7 +31,12 @@ class TextareaUStory extends LitWithoutShadowDom {
           id=${this.name}
           placeholder=${this.placeholder}
           rows=${this.rows}
+          @change=${this._onInputChange}
+          ?required=${this.required}
         >${this.content}</textarea>
+        <div class="invalid-feedback">
+          ${this.invalidFeedback}
+        </div>
       </div>
   `;
   }

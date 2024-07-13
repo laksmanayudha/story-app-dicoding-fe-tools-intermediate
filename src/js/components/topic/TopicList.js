@@ -11,26 +11,30 @@ class TopicList extends LitWithoutShadowDom {
     this.topics = [];
   }
 
+  _showTopics() {
+    if (!this.topics.length) return 'No topic available';
+
+    return this.topics.map((topic) => {
+      return this._topicItemTemplate(topic);
+    });
+  }
+
+  _topicItemTemplate({ description, createdAt, name }) {
+    return html`
+      <topic-item
+        description=${description}
+        createdAt=${createdAt}
+        name=${name}
+      ></topic-item>
+    `;
+  }
+
   render() {
     this.classList.add('w-100');
     
     return html`
       <div class="list-group">
-        <topic-item
-          description="created on three days ago. And then I don't know..."
-          createdAt="3 days ago"
-          name="Laksmana Yudha"
-        ></topic-item>
-        <topic-item
-          description="created on three days ago. And then I don't know..."
-          createdAt="3 days ago"
-          name="Laksmana Yudha"
-        ></topic-item>
-        <topic-item
-          description="created on three days ago. And then I don't know..."
-          createdAt="3 days ago"
-          name="Laksmana Yudha"
-        ></topic-item>
+        ${this._showTopics()}
       </div>
     `;
   }
