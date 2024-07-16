@@ -3,7 +3,8 @@ import LitWithoutShadowDom from '../base/LitWithoutShadowDom';
 
 class StoryList extends LitWithoutShadowDom {
   static properties = {
-    stories: { type: Array }
+    stories: { type: Array },
+    loading: { type: Boolean, reflect: true },
   }
 
   constructor() {
@@ -30,10 +31,23 @@ class StoryList extends LitWithoutShadowDom {
     `;
   }
 
+  _showLoading() {
+    if (this.loading) {
+      return html`
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      `;
+    }
+
+    return html``;
+  }
+
   render() {
     return html`
     <div class="vstack align-items-center gap-3">
       ${this._showStories()}
+      ${this._showLoading()}
     </div>
     `;
   }

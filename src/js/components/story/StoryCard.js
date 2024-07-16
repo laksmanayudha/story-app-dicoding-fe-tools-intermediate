@@ -14,14 +14,14 @@ class StoryCard extends LitWithoutShadowDom {
     this.classList.add('w-100');
     
     return html`
-      <div class="card mx-auto" style="max-width: 34rem;">
+      <div class="card mx-auto" style="max-width: 34rem">
         <div class="card-header bg-transparent">
           <div class="hstack gap-2 text-truncate">
             <i class="bi bi-person-fill"></i>
             ${this.name}
           </div>
         </div>
-        <img src="${this.photoUrl}" alt="story image">
+        <img src="${this.photoUrl}" class="img-fit" alt="story image" style="max-height: 300px;">
         <div class="card-body">
           <p class="card-text">${this.description}</p>
         </div>

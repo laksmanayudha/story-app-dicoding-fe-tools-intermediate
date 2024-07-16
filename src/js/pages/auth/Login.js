@@ -52,6 +52,7 @@ const Login = {
 
       goToPage('/');
     } catch (error) {
+      this._loginForm.hideLoading();
       console.error(error.message);
     }
   }

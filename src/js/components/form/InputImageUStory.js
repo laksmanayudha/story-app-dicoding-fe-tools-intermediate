@@ -15,7 +15,7 @@ class InputImageUStory extends LitWithoutShadowDom {
       throw new Error(e.target.validationMessage);
   
     this._showPhotoPreview(e.target);
-    this.onChange(e.target.value);
+    this.onChange(e.target.files[0]);
   }
 
   _showPhotoPreview(inputImage) {
@@ -46,6 +46,7 @@ class InputImageUStory extends LitWithoutShadowDom {
               background-position: center;
               background-size: contain;
             "
+            accept="image/*"
           ></div>
         </div>
         <input

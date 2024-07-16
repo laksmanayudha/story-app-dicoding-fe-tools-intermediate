@@ -1,14 +1,14 @@
 import axios from 'axios';
 import Config from '../config/config';
-import Utils from '../utils/utils';
 import ApiEndpoint from '../config/api-endpoint';
+import Session from '../utils/session';
 
 const Story = {
-  async getAll({ page = 1, size = 10 }) {
+  async getAll({ page = 1, size = 5 } = {}) {
     try {
-      const response = await axios.get(ApiEndpoint.GET_ALL_TRANSACTION, {
+      const response = await axios.get(ApiEndpoint.GET_ALL_STORY, {
         headers: {
-          Authorization: `Bearer ${Utils.getUserToken(Config.USER_TOKEN_KEY)}`,
+          Authorization: `Bearer ${Session.getUserToken(Config.USER_TOKEN_KEY)}`,
         },
         params: { page, size },
       });
@@ -21,12 +21,12 @@ const Story = {
     }
   },
  
-  async store({ description, photo }) {
+  async store({ description, photo } = {}) {
     try {
       const data = { description, photo };
-      const response = await axios.post(ApiEndpoint.STORE_TRANSACTION, data, {
+      const response = await axios.post(ApiEndpoint.STORE_STORY, data, {
         headers: {
-          Authorization: `Bearer ${Utils.getUserToken(Config.USER_TOKEN_KEY)}`,
+          Authorization: `Bearer ${Session.getUserToken(Config.USER_TOKEN_KEY)}`,
           'Content-Type': 'multipart/form-data',
         },
       });

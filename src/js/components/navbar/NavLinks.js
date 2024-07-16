@@ -12,7 +12,7 @@ class NavLinks extends LitWithoutShadowDom {
           <img
             style="width: 30px;height: 30px"
             class="img-fluid rounded-pill"
-            src="https://ui-avatars.com/api/?name=LY&background=random"
+            src="https://ui-avatars.com/api/?name=UN&background=random"
             alt="User Name"
           />
           <nav-link class="logout-btn" content="Logout" to="#"></nav-link>

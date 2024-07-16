@@ -2,13 +2,18 @@ import Config from "../config/config";
 import Formatter from "../utils/formatter";
 import { goToPage } from "../utils/routes";
 import Session from "../utils/session";
+import Story from '../network/story';
 
 const Home = {
+  currentPage: 1,
+  stories: [],
+  pageLoading: false,
+
   async init() {
     this._getComponents();
     this._initUI();
     this._initEventListener();
-    await this._populateData();
+    await this._loadMoreStories();
   },
 
   _getComponents() {
@@ -29,8 +34,8 @@ const Home = {
   },
 
   _initEventListener() {
-    this._modalAddStory.onAddStorySubmit = ({ description, photo }) => {
-      console.log({ description, photo });
+    this._modalAddStory.onAddStorySubmit = async ({ description, photo }) => {
+      await this._storeStory({ description, photo });
     }
 
     this._logoutButtons.forEach((logoutButton) => {
@@ -38,6 +43,15 @@ const Home = {
         e.preventDefault();
         this._logout();
       });
+    });
+
+    window.addEventListener('scroll', async () => {
+      const endOfPage = window.outerHeight + window.scrollY >= document.body.offsetHeight;
+      if (endOfPage && !this.pageLoading) {
+        this.pageLoading = true;
+        await this._loadMoreStories();
+        this.pageLoading = false;
+      }
     });
   },
 
@@ -49,17 +63,51 @@ const Home = {
     }
   },
 
-  async _populateData() {
-    const response = await fetch('/data/data.json');
-    const { listStory } = await response.json(); 
-    const stories = listStory.map((story) => {
-      return {
-        ...story,
-        createdAt: Formatter.readableDatetime(story.createdAt),
-      };
-    }); 
-    this._storyList.setAttribute('stories', JSON.stringify(stories));
-    this._topicList.setAttribute('topics', JSON.stringify(stories.slice(0, 4)));
+  async _loadMoreStories() {
+    try {
+      this._storyList.loading = true;
+      const response = await Story.getAll({ page: this.currentPage });
+      this._storyList.loading = false;
+
+      if (response.error) {
+        alert(response.message);
+        throw new Error(response.message)
+      }
+
+      const { listStory } = response;
+      const stories = listStory.map((story) => {
+        return {
+          ...story,
+          createdAt: Formatter.readableDatetime(story.createdAt),
+        };
+      });
+
+      this.stories = [...this.stories, ...stories];
+      this.currentPage += 1;
+      this._storyList.setAttribute('stories', JSON.stringify(this.stories));
+      this._topicList.setAttribute('topics', JSON.stringify(this.stories.slice(0, 5)));
+    } catch (error) {
+      this._storyList.loading = false;
+      console.error(error.message);
+    }
+  },
+
+  async _storeStory({ description, photo }) {
+    try {
+      this._modalAddStory.showLoading();
+      const response = await Story.store({ description, photo });
+      this._modalAddStory.hideLoading();
+
+      if (response.error) {
+        alert(response.message);
+        throw new Error(response.message);
+      }
+
+      goToPage('/');
+    } catch (error) {
+      this._modalAddStory.hideLoading();
+      console.error(error.message);
+    }
   }
 }
 

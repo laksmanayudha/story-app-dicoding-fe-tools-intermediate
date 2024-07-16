@@ -29,11 +29,13 @@ const Register = {
   },
 
   _showErrorAlert(message) {
+    this._successAlert.hidden = true;
     this._errorAlert.message = message;
     this._errorAlert.hidden = false;
   },
 
   _showSuccessAlert(message) {
+    this._errorAlert.hidden = true;
     this._successAlert.message =message;
     this._successAlert.hidden = false;
   },
@@ -44,7 +46,6 @@ const Register = {
 
       this._registerForm.showLoading();
       const response = await Auth.register({ name, email, password });
-      this._registerForm.hideLoading();
 
       if (response.error) {
         this._showErrorAlert(response.message);
@@ -54,8 +55,10 @@ const Register = {
       this._showSuccessAlert('Sign up successfuly. Redirecting...');
       setTimeout(() => {
         goToPage('/auth/login.html');
+        this._registerForm.hideLoading();
       }, 3000);
     } catch (error) {
+      this._registerForm.hideLoading();
       console.error(error.message);
     }
   }
