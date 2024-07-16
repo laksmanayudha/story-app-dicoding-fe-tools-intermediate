@@ -12,4 +12,6 @@ const routes = {
 
 const findPages = () => routes[window.location.pathname];
 
-export { findPages };
+const goToPage = (path) => window.location.href = path;
+
+export { findPages, goToPage };

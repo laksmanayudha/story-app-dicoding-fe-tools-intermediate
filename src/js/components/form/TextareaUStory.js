@@ -19,6 +19,9 @@ class TextareaUStory extends LitWithoutShadowDom {
   }
 
   _onInputChange(e) {
+    if (!e.target.checkValidity())
+      throw new Error(e.target.validationMessage);
+  
     this.onChange(e.target.value);
   }
 

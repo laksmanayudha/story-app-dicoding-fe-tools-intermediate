@@ -14,7 +14,7 @@ const Story = {
   },
  
   async store({ description, photo }) {
-    const data = {description, photo };
+    const data = { description, photo };
  
     return await axios.post(ApiEndpoint.STORE_TRANSACTION, data, {
       headers: {

@@ -12,7 +12,9 @@ class FloatingInputUStory extends LitWithoutShadowDom {
   }
 
   _onInputChange(e) {
-    this._showPhotoPreview(e.target);
+    if (!e.target.checkValidity())
+        throw new Error(e.target.validationMessage);
+    
     this.onChange(e.target.value);
   }
 

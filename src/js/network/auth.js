@@ -7,7 +7,13 @@ const Auth = {
   },
 
   async login({ email, password }) {
-    return await axios.post(ApiEndpoint.LOGIN, { email, password });
+    try {
+      return await axios.post(ApiEndpoint.LOGIN, { email, password });
+    } catch (error) {
+      if (error.response) return error.response.data;
+      if (error.request) return error.request;
+      return null;
+    }
   },
 };
 

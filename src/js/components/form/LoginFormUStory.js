@@ -56,7 +56,7 @@ class LoginFormUStory extends FormValidation {
           name="email"
           type="email"
           label="Your email"
-          invalidFeedback="Email is required"
+          invalidFeedback="Please input a valid email"
           required
         ></floating-input-ustory>
         <floating-input-ustory
