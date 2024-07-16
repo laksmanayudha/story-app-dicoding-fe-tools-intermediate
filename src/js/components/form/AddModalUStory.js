@@ -1,7 +1,7 @@
 import { html } from 'lit';
-import LitWithoutShadowDom from '../base/LitWithoutShadowDom';
+import FormValidation from '../base/FormValidation';
 
-class AddModalUStory extends LitWithoutShadowDom {
+class AddModalUStory extends FormValidation {
   static properties = {
     modalId: { type: String, reflect: true },
     onAddStorySubmit: { type: Function },
@@ -15,11 +15,7 @@ class AddModalUStory extends LitWithoutShadowDom {
   }
 
   async _onSubmitWithInput(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    e.target.classList.add('was-validated');
-
+    this._wasValidated(e);
     await this.onAddStorySubmit({
       description: this.description,
       photo: this.photo,

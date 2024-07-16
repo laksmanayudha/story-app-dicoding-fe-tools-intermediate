@@ -48,6 +48,16 @@ module.exports = {
       filename: 'about-us.html',
       template: path.resolve(__dirname, 'src/views/about-us.html'),
     }),
+
+    new HtmlWebpackPlugin({
+      filename: 'auth/login.html',
+      template: path.resolve(__dirname, 'src/views/auth/login.html'),
+    }),
+
+    new HtmlWebpackPlugin({
+      filename: 'auth/register.html',
+      template: path.resolve(__dirname, 'src/views/auth/register.html'),
+    }),
     
     new CopyWebpackPlugin({
       patterns: [

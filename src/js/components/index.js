@@ -25,7 +25,10 @@ import './form/ButtonUStory';
 import './form/ButtonLinkUStory';
 import './form/AddModalUStory';
 import './form/TextareaUStory';
+import './form/FloatingInputUStory';
 import './form/InputImageUStory';
+import './form/LoginFormUStory';
+import './form/RegisterFormUStory';
 
 // company
 import './company/CompanyProfile';

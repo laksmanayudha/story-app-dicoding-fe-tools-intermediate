@@ -4,7 +4,6 @@ import LitWithoutShadowDom from '../base/LitWithoutShadowDom';
 class InputImageUStory extends LitWithoutShadowDom {
   static properties = {
     name: { type: String, reflect: true },
-    content: { type: String, reflect: true },
     label: { type: String, reflect: true },
     required: { type: Boolean, reflect: true },
     invalidFeedback: { type: String, reflect: true },

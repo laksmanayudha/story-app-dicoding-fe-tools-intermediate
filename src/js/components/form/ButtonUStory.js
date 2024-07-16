@@ -22,7 +22,7 @@ class ButtonUStory extends LitWithoutShadowDom {
     return html`
       <button
         type=${this.type}
-        class="btn ${this.large ? 'btn-lg' : ''} ${this.theme}"
+        class="btn ${this.large ? 'btn-lg' : ''} ${this.theme} w-100"
         data-bs-toggle=${this.triggerModal ? 'modal' : nothing}
         data-bs-target=${this.triggerModal || nothing}
         @click=${this.onClick}

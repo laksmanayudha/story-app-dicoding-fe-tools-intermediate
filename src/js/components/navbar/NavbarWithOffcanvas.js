@@ -29,12 +29,20 @@ class NavbarWithOffcanvas extends LitWithoutShadowDom {
             <a class="navbar-brand text-truncate" href="#">
               ${this.brandName}
             </a>
-            <ul class="d-none d-sm-flex nav ms-auto">
+            <ul class="d-none d-sm-block nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link text-dark" href="#">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-dark" href="#">Sign Up</a>
+                <a class="nav-link text-dark" href="#" id="logoutButton">
+                  <div class="d-flex align-items-center gap-2">
+                    <span>Logout</span>
+                    <img
+                      id="userLoggedMenu"
+                      style="width: 30px;height: 30px"
+                      class="img-fluid rounded-pill"
+                      src="https://ui-avatars.com/api/?name=LY&background=random"
+                      alt="User Name"
+                    />
+                  </div>
+                </a>
               </li>
             </ul>
           </div>
