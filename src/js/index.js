@@ -5,11 +5,17 @@ import '../sass/main.scss';
 import * as bootstrap from 'bootstrap';
 import './components';
 import { findPages } from './utils/routes';
+import CheckUserAuthMiddleware from './middleware/check-user-auth';
 
 const main = () => {
-  window.addEventListener('DOMContentLoaded', async () => { 
-    const page = findPages();
-    page.init();
+  window.addEventListener('DOMContentLoaded', async () => {
+    document.body.classList.add('d-none');
+    
+    CheckUserAuthMiddleware.checkLoginState(() => {
+      document.body.classList.remove('d-none');
+      const page = findPages();
+      page.init();
+    });
   });
 };
 

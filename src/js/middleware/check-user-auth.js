@@ -1,25 +1,26 @@
-import Utils from '../../utils/utils';
-import Config from '../../config/config';
+import Session from '../utils/session';
+import Config from '../config/config';
+import { goToPage } from '../utils/routes';
 
 const CheckUserAuthMiddleware = {
   excludeRedirectPage: ['login.html', 'register.html'],
 
-  checkLoginState() {
-    const userToken = Utils.getUserToken(Config.USER_TOKEN_KEY);
+  checkLoginState(callback) {
+    const userToken = Session.getUserToken(Config.USER_TOKEN_KEY);
     const isUserSignedIn = Boolean(userToken);
     const isUserOnAuthPage = this._isUserOnAuthPage(this.excludeRedirectPage);
 
     if (isUserSignedIn && isUserOnAuthPage) {
-      window.location.href = '/';
+      goToPage('/')
       return;
     }
 
     if (!isUserSignedIn && !isUserOnAuthPage) {
-      window.location.href = '/auth/login.html';
+      goToPage('/auth/login.html');
       return;
     }
 
-    return;
+    callback();
   },
 
   _isUserOnAuthPage(pages) {

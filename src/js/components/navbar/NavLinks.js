@@ -10,13 +10,12 @@ class NavLinks extends LitWithoutShadowDom {
         <nav-dropdown content="Contacts"></nav-dropdown>
         <div class="d-flex align-items-center gap-2 d-sm-none">
           <img
-            id="userLoggedMenu"
             style="width: 30px;height: 30px"
             class="img-fluid rounded-pill"
             src="https://ui-avatars.com/api/?name=LY&background=random"
             alt="User Name"
           />
-          <nav-link content="Logout" to="#"></nav-link>
+          <nav-link class="logout-btn" content="Logout" to="#"></nav-link>
         </div>
       </ul>
     `;

@@ -27,6 +27,7 @@ import './form/AddModalUStory';
 import './form/TextareaUStory';
 import './form/FloatingInputUStory';
 import './form/InputImageUStory';
+import './form/AlertUStory';
 import './form/LoginFormUStory';
 import './form/RegisterFormUStory';
 

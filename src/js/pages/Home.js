@@ -1,4 +1,7 @@
+import Config from "../config/config";
 import Formatter from "../utils/formatter";
+import { goToPage } from "../utils/routes";
+import Session from "../utils/session";
 
 const Home = {
   async init() {
@@ -15,6 +18,7 @@ const Home = {
     this._topicList = document.querySelector('topic-list');
     this._topicSection = document.querySelector('#topicSection');
     this._categoryList = document.querySelector('#categoryList');
+    this._logoutButtons = document.querySelectorAll('.logout-btn');
   },
 
   _initUI() {
@@ -27,6 +31,21 @@ const Home = {
   _initEventListener() {
     this._modalAddStory.onAddStorySubmit = ({ description, photo }) => {
       console.log({ description, photo });
+    }
+
+    this._logoutButtons.forEach((logoutButton) => {
+      logoutButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        this._logout();
+      });
+    });
+  },
+
+  _logout() {
+    const confirmed = confirm('Are you sure to logout ?');
+    if (confirmed) {
+      Session.destroyUserToken(Config.USER_TOKEN_KEY);
+      goToPage('/auth/login.html');
     }
   },
 

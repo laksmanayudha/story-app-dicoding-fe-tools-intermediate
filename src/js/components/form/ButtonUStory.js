@@ -10,12 +10,26 @@ class ButtonUStory extends LitWithoutShadowDom {
     triggerModal: { type: String, reflect: true },
     large: { type: Boolean, reflect: true },
     theme: { type: String , reflect: true },
+    loading: { type: Boolean, reflect: true }
   }
 
   constructor() {
     super();
     this.type = 'button';
     this.theme = 'btn-dark';
+    this.loading = false;
+  }
+
+  _showLoading() {
+    if (this.loading) {
+      return html`
+        <div class="spinner-border spinner-border-sm" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      `
+    }
+
+    return html``;
   }
 
   render() {
@@ -27,6 +41,7 @@ class ButtonUStory extends LitWithoutShadowDom {
         data-bs-target=${this.triggerModal || nothing}
         @click=${this.onClick}
       >
+        ${this._showLoading()}
         <i class="bi ${this.bsIcon}"></i>
         ${this.content}
       </button>

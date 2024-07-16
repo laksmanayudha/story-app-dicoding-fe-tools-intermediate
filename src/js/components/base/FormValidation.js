@@ -6,6 +6,16 @@ class FormValidation extends LitWithoutShadowDom {
     e.stopPropagation();
     e.target.classList.add('was-validated');
   }
+
+  showLoading() {
+    const submitButton = this.querySelector('[type="submit"]');
+    submitButton.loading = true;
+  }
+
+  hideLoading() {
+    const submitButton = this.querySelector('[type="submit"]');
+    submitButton.loading = false;
+  }
 }
 
 export default FormValidation;

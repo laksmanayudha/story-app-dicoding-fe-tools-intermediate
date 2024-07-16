@@ -33,9 +33,8 @@ class NavbarWithOffcanvas extends LitWithoutShadowDom {
               <li class="nav-item">
                 <a class="nav-link text-dark" href="#" id="logoutButton">
                   <div class="d-flex align-items-center gap-2">
-                    <span>Logout</span>
+                    <span class="logout-btn">Logout</span>
                     <img
-                      id="userLoggedMenu"
                       style="width: 30px;height: 30px"
                       class="img-fluid rounded-pill"
                       src="https://ui-avatars.com/api/?name=LY&background=random"
